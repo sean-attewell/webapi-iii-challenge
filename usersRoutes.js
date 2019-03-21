@@ -72,9 +72,9 @@ routes.get('/:id/corpus', async (req, res) => {
     }
 });
 
-routes.use(nameCase);
+// routes.use(nameCase);
 
-routes.post('/', async (req, res) => {
+routes.post('/', nameCase, async (req, res) => {
     if (!req.body.name) {
         res.status(400).json({ errorMessage: "Please provide name for the user." });
     } else {
@@ -87,7 +87,7 @@ routes.post('/', async (req, res) => {
     }
 }});
 
-routes.put('/:id', async (req, res) => {
+routes.put('/:id', nameCase, async (req, res) => {
     const { id } = req.params; // rather than write req.params.id each time
     if (!req.body.name) {
         res.status(400).json({ errorMessage: "Please provide name for the user." });
